@@ -83,6 +83,9 @@ or
 •	linux:/> nclaunch& // On subsequent calls to NCVERILOG 
 
 	It will invoke the nclaunch window for functional simulation we can compile,elaborate and simulate it using Multiple Step .
+![Screenshot 2024-10-05 162807](https://github.com/user-attachments/assets/fb281187-3e7d-4e95-a194-5d526a2e0333)
+![Screenshot 2024-10-05 162826](https://github.com/user-attachments/assets/1e7ac738-7360-4ec1-a5ab-006db2b749ab)
+
 
 ### Fig 4:Setting Multi-step simulation
 
