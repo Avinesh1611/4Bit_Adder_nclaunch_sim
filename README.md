@@ -1,5 +1,3 @@
-# EXP1: 4 Bit Adder functionality verification
-
 ## Aim:
 To write a verilog code for 4bit adder and verify the functionality using Test bench.
 
@@ -57,8 +55,39 @@ Note : File name should be with HDL Extension
 
 •	fa_4bit_test.v → Test bench 
 
-*/Program to design 4 bit adder by instantiating 1 bit Full adder.also add test bench program */
-Developed by: Register Number*/
+full_add.vmodule full_adder(A,B,CIN,S,COUT);
+input A,B,CIN;
+output S,COUT;
+assign S=A^B^CIN;
+assign COUT=(A&B) | (CIN&(A^B));
+endmodule
+
+module fulladd_4bit(A,B,C0,S,C4);
+input [3:0] A,B;
+input C0;
+output [3:0] S;
+output C4;
+wire C1,C2,C3;
+full_adder fa0 (A[0],B[0],C0,S[0],C1);
+full_adder fa1 (A[1],B[1],C1,S[1],C2);
+full_adder fa2 (A[2],B[2],C2,S[2],C3);
+full_adder fa3 (A[3],B[3],C3,S[3],C4);
+endmodule
+
+module test_4bit;
+reg [3:0] A;
+reg [3:0] B; reg C0;
+wire [3:0] S; wire C4;
+fulladd_4bit dut (A,B,C0,S,C4);
+initial 
+begin
+A=4'b0011;B=4'b0011;C0=1'b0;
+#10;  A=4'b1011;B=4'b0111;C0=1'b1;
+#10; A=4'b1111;B=4'b1111;C0=1'b1;
+#10;
+end initial
+#50 $finish;
+endmodule
 
 ## Functional Simulation: 
 
@@ -72,6 +101,9 @@ Developed by: Register Number*/
       
 	After this you can see the window like below 
 
+
+![WhatsApp Image 2024-10-05 at 11 16 36_3f4510a6](https://github.com/user-attachments/assets/ce625fc8-4a88-4ba9-bb7a-206d5dd48907)
+
 ### Fig 3:Invoke the Cadence Environment
 
 	To Launch Simulation tool 
@@ -83,15 +115,16 @@ or
 •	linux:/> nclaunch& // On subsequent calls to NCVERILOG 
 
 	It will invoke the nclaunch window for functional simulation we can compile,elaborate and simulate it using Multiple Step .
-![Screenshot 2024-10-05 162807](https://github.com/user-attachments/assets/fb281187-3e7d-4e95-a194-5d526a2e0333)
-![Screenshot 2024-10-05 162826](https://github.com/user-attachments/assets/1e7ac738-7360-4ec1-a5ab-006db2b749ab)
 
+![WhatsApp Image 2024-10-05 at 11 16 37_3eab63a2](https://github.com/user-attachments/assets/d0ca135f-357b-48ec-913f-ed11e6b21d7a)
 
 ### Fig 4:Setting Multi-step simulation
 
 	Select Multiple Step and then select “Create cds.lib File” .
 
 	Click the cds.lib file and save the file by clicking on Save option 
+
+![WhatsApp Image 2024-10-05 at 11 16 37_1fa3f7ef](https://github.com/user-attachments/assets/684056d0-c61d-4bcb-a32a-27ad49fcecd5)
 
 ### Fig 5:cds.lib file Creation
 
@@ -113,7 +146,9 @@ or
 
 	Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation .
 
-	To perform the function simulation, the following three steps are involved Compilation, Elaboration and Simulation. 
+	To perform the function simulation, the following three steps are involved Compilation, Elaboration and Simulation.
+
+![WhatsApp Image 2024-10-05 at 11 14 10_1b59d771](https://github.com/user-attachments/assets/0067d8fd-c9fe-4965-91c8-38305084578a)
 
 ### Fig 7: Nclaunch Window
 
@@ -134,9 +169,9 @@ i.e Cadence IES command for compile: ncverilog +access+rwc -compile fa.v
 
 Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation
 
-### Fig 8: Compiled database in worklib
-![Screenshot 2024-09-26 162651](https://github.com/user-attachments/assets/0733f04a-bead-4e0d-8957-67c5c83a7ba9)
+![WhatsApp Image 2024-10-05 at 11 14 10_1b59d771](https://github.com/user-attachments/assets/184d623c-6b8b-4ff0-adad-5f9c62feecc1)
 
+### Fig 8: Compiled database in worklib
 
 	After compilation it will come under worklib you can see in right side window
 
@@ -159,9 +194,9 @@ i.e Cadence IES command for compile: ncverilog +access+rwc -compile fa.v
    
 	After elaboration the file will come under snapshot. Select the test bench and elaborate it.
 
-### Fig 9: Elaboration Launch Option
-![Screenshot 2024-09-26 162651](https://github.com/user-attachments/assets/8c5bfb04-c809-4a72-ab43-cb8b4397251a)
+![WhatsApp Image 2024-10-05 at 11 14 10_1b59d771](https://github.com/user-attachments/assets/0cb28398-8a6e-49a6-9348-e6bf69f66fc5)
 
+### Fig 9: Elaboration Launch Option
 
 ## Step 3: Simulation: – Simulate with the given test vectors over a period of time to observe the output behaviour. 
 
@@ -173,14 +208,20 @@ i.e Cadence IES command for compile: ncverilog +access+rwc -compile fa.v
 
 	Steps for simulation – Run the simulation command with simulator options
 
+![373644273-a52a64bc-a2cb-43b7-8884-248512f356f8](https://github.com/user-attachments/assets/1f568573-6151-42e0-bb30-3d47d4edaed3)
+
 ### Fig 10: Design Browser window for simulation
-![Screenshot 2024-09-26 162118](https://github.com/user-attachments/assets/639edaf4-f82c-4150-a8f9-55e0baa6adbb)
+
+![373644591-ce5dcf19-178e-41c2-abff-71fce4757d2a](https://github.com/user-attachments/assets/2e7018c3-b059-4b47-a74b-3b28e7907715)
 
 ### Fig 11: Launching Simulation Waveform WindowSimulation Waveform Window
-![Screenshot 2024-10-03 162932](https://github.com/user-attachments/assets/aa0e8b67-e2a7-48db-974a-f546aadec0bc)
+
+![WhatsApp Image 2024-10-05 at 11 14 10_44553b63](https://github.com/user-attachments/assets/a9314965-0fa6-4e08-9d2d-db2c5bccd6c2)
 
 ### Fig 12: Simulation Waveform Window
-![Screenshot 2024-10-03 162932](https://github.com/user-attachments/assets/aa0e8b67-e2a7-48db-974a-f546aadec0bc)
+
+
+
 
 
 
