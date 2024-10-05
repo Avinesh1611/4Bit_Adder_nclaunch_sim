@@ -126,7 +126,7 @@ or
 
 	Click the cds.lib file and save the file by clicking on Save option 
 
-![WhatsApp Image 2024-10-05 at 11 16 37_1fa3f7ef](https://github.com/user-attachments/assets/684056d0-c61d-4bcb-a32a-27ad49fcecd5)
+
 
 ### Fig 5:cds.lib file Creation
 
@@ -138,7 +138,8 @@ or
 
 •	A Click “OK” in the “nclaunch: Open Design Directory” window as shown in below figure 
 
-![image](https://github.com/user-attachments/assets/781b297a-11e9-4140-89c5-ee3b0d15bbd4)
+![Screenshot 2024-10-05 162219](https://github.com/user-attachments/assets/4c53ee28-9dfb-4a08-8282-e1b88d6d155a)
+
 
 ### Fig 6: Selection of Don’t include any libraries
 
@@ -149,8 +150,7 @@ or
 	Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation .
 
 	To perform the function simulation, the following three steps are involved Compilation, Elaboration and Simulation.
-
-![WhatsApp Image 2024-10-05 at 11 14 10_1b59d771](https://github.com/user-attachments/assets/0067d8fd-c9fe-4965-91c8-38305084578a)
+![image](https://github.com/user-attachments/assets/781b297a-11e9-4140-89c5-ee3b0d15bbd4)
 
 ### Fig 7: Nclaunch Window
 
